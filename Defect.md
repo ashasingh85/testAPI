@@ -1,0 +1,1 @@
+ Defect -Put request should update the exisiting data with the status- 204 updated but it throws 204 No content
