@@ -1,0 +1,27 @@
+{
+  "name": "api_test",
+  "version": "1.0.0",
+  "description": "API Automation for woolies test",
+  "main": "index.js",
+  "scripts": {
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean:reports": "rmdir /S /Q cypress\\reports && mkdir cypress\\reports  && mkdir cypress\\reports\\mochareports",
+    "pretest": "npm run clean:reports",
+    "combine-reports": "mochawesome-merge cypress/reports/mocha/*.html > cypress/reports/mochareports/report.html",
+    "generate-report": "marge cypress/reports/mochareports/report.html -f report -o cypress/reports/mochareports",
+    "posttest": "npm run combine-reports && npm run generate-report",
+    "report": "npm run cy:run || npm run posttest"
+  },
+  "author": "Asha Singh",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "cypress": "^6.3.0",
+    "cypress-multi-reporters": "^1.4.0",
+    "mochawesome": "^6.2.1",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.1.0"
+  }
+}
